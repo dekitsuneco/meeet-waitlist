@@ -1,0 +1,168 @@
+@import './nullify.scss';
+@import './vars.scss';
+@import './mixins.scss';
+
+/* | Vars*/
+$h-header: minmax(100px, auto);
+$h-main: 1fr;
+$h-footer: minmax(70px, auto);
+
+$w-col-1: 260px;
+$w-col-2: 1040px;
+
+$breakpoint-1: 992px;
+
+/* | Mixins */
+@mixin grid-layout-section {
+  display: grid;
+  grid-template: 
+    1fr
+    / 1fr minmax(auto, $w-col-1) minmax(auto, $w-col-2) 1fr;
+}
+
+/* | Global */
+body {
+  font-family: sans-serif;
+}
+/* | Common */
+.container {
+  max-width: 1024px;
+  margin: 0px auto;
+}
+/* | Page */
+.wrapper {
+  min-height: 100vh;
+
+  display: grid;
+  grid-template: 
+    $h-header
+    $h-main
+    $h-footer
+    / 1fr;
+  grid-template-areas: 
+    "header"
+    "main"
+    "footer";
+
+  /* || HEADER */
+  .header {
+    @include grid-layout-section;
+
+    align-items: center;
+
+    padding: 15px;
+
+    
+    background-color: sienna;
+  }
+
+  /* || MAIN */
+  .main {
+    padding: 30px 15px;
+
+
+    background-color: rgb(52,51,52);
+
+    @media (min-width: $breakpoint-1) {
+      grid-area: main;
+
+      @include grid-layout-section;
+    }
+
+    .sidebar {
+      margin: 0px 0px 30px 0px;
+      padding: 25px 20px;
+
+      
+      background-color: rgb(121,144,108);
+      
+      @media (min-width: $breakpoint-1) {
+        grid-column: 2 /3;
+
+        margin: 0;
+      }
+
+      &__menu {}
+
+      &__list {
+        display: grid;
+        grid-auto-flow: row;
+        row-gap: 25px;
+      }
+
+      &__link {
+        color: #fff;
+        font-size: 1.05rem;
+      }
+    }
+
+    .content { 
+      @media (min-width: $breakpoint-1) {
+        grid-column: 3 / 4;
+  
+  
+        padding: 0px 0px 0px 30px;
+      }
+
+      &__title {
+        margin: 0px 0px 40px 0;
+
+
+        color: #fff;
+        font-size: 2rem;
+      }
+    }
+  }
+
+  /* || FOOTER */
+  .footer {
+    grid-area: footer;
+
+    @include grid-layout;
+
+    align-items: center;
+
+    padding: 15px;
+
+
+    background-color: #77608d;
+    color: #fff;
+
+    @media (max-width: 550px) {
+      grid-template:
+        1fr
+        1fr
+        / 1fr;
+
+
+      text-align: center;
+    }
+
+    &__copy {
+      @media (min-width: 550px) {
+        grid-column: 2 / 3;
+      }
+
+      @media (max-width: 550px) {
+        order: 2;
+      }
+    }
+
+    &__text {
+      @media (min-width: 550px) {
+        grid-column: 3 / 4;
+        
+
+        text-align: right;
+      }
+
+      @media (max-width: 550px) {
+        order: 1;
+      }
+
+      a {
+        color: rgb(104, 11, 11);
+      }
+    }
+  }
+}
