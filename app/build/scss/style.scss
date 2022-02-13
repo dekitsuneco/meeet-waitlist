@@ -60,7 +60,8 @@ body {
   }
 
     &__title {
-      margin: 0px 0px 20px 0px;
+      //@at-root: 0px 0px 20px 0px;
+      margin: 125px 0px 0px 0px;
 
       position: relative;
 
@@ -71,6 +72,31 @@ body {
       font-size: clamp(1.5rem, 12.5vw, 7rem);
       font-weight: bold;
 
+      transition: all 0.2s ease-in-out; 
+
+      @media (min-width: 420px) {
+        margin: 100px 0px 5px 0px;
+      }
+
+      @media (min-width: 620px) {
+        margin: 80px 0px 10px 0px;
+      }
+
+      @media (min-width: 768px) {
+        margin: 60px 0px 12px 0px;
+      }
+
+      @media (min-width: 845px) {
+        margin: 40px 0px 15px 0px;
+      }
+
+      @media (min-width: 980px) {
+        margin: 20px 0px 17px 0px;
+      }
+
+      @media (min-width: 1024px) {
+        margin: 0px 0px 20px 0px;
+      }
     }
 
     &__description {
@@ -107,33 +133,37 @@ body {
 
     &__twitter-link {     
       z-index: 2;
-      
-      margin-top: 80px;
-      margin-bottom: -80px;
+
+      margin: 125px 0px 5px 0px;
+
 
 
       color: $col-tertiary;
 
-      transition: all 0.2s ease-in-out;
+      transition: all 0.2s ease-in-out; 
 
       @media (min-width: 420px) {
-        margin-top: 50px;
-        margin-bottom: -50px;
+        margin: 100px 0px 5px 0px;
       }
 
       @media (min-width: 620px) {
-        margin-top: 30px;
-        margin-bottom: -30px;
+        margin: 80px 0px 0px 0px;
       }
 
       @media (min-width: 768px) {
-        margin-top: 10px;
-        margin-bottom: -10px;
+        margin: 60px 0px 0px 0px;
+      }
+
+      @media (min-width: 845px) {
+        margin: 40px 0px 0px 0px;
+      }
+
+      @media (min-width: 980px) {
+        margin: 20px 0px 0px 0px;
       }
 
       @media (min-width: 1024px) {
-        margin-top: 0px;
-        margin-bottom: 0px;
+        margin: 0px 0px 0px 0px;
       }
 
       span {
@@ -175,7 +205,7 @@ body {
   z-index: 1;
 
   &-1 {
-      top: -215px;
+      top: -205px;
       left: 30px;
 
       width: 80px;
@@ -185,7 +215,7 @@ body {
       background-size: contain;
   }
   &-2 {
-    top: -230px;
+    top: -240px;
     left: 150px;
 
     width: 125px;
@@ -195,7 +225,7 @@ body {
     background-size: contain;
   }
   &-3 {
-    top: 75px;
+    top: 55px;
     left: 150px;
 
     width: 125px;
