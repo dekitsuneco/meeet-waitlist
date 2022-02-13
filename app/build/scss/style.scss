@@ -1,168 +1,209 @@
+@import url('https://fonts.googleapis.com/css2?family=Sen:wght@400;700&display=swap');
+
 @import './nullify.scss';
-@import './vars.scss';
 @import './mixins.scss';
+@import './vars.scss';
 
-/* | Vars*/
-$h-header: minmax(100px, auto);
-$h-main: 1fr;
-$h-footer: minmax(70px, auto);
 
-$w-col-1: 260px;
-$w-col-2: 1040px;
-
-$breakpoint-1: 992px;
-
-/* | Mixins */
-@mixin grid-layout-section {
-  display: grid;
-  grid-template: 
-    1fr
-    / 1fr minmax(auto, $w-col-1) minmax(auto, $w-col-2) 1fr;
-}
 
 /* | Global */
 body {
-  font-family: sans-serif;
+  font-family: 'Sen', sans-serif;
+  overflow: auto;
 }
-/* | Common */
+
 .container {
-  max-width: 1024px;
-  margin: 0px auto;
+  max-width: 1444px;
+  height: 100%;
+
+  margin: 0 auto;
+  padding: 0px $p-horiz;
 }
-/* | Page */
+
+/* | Content */
 .wrapper {
   min-height: 100vh;
 
   display: grid;
-  grid-template: 
-    $h-header
-    $h-main
-    $h-footer
-    / 1fr;
+  @include page-grid-layout;
   grid-template-areas: 
     "header"
     "main"
-    "footer";
+    "footer"
+  ;
 
-  /* || HEADER */
-  .header {
-    @include grid-layout-section;
 
-    align-items: center;
+  background-color: $col-primary;
+}
 
-    padding: 15px;
+/* || Header */
+.header {
+  grid-area: header;
 
-    
-    background-color: sienna;
+  &__body {
+    padding: 15px 0px;    
+
+    z-index: 2;
+  }
+}
+
+/* || Main */
+.main {
+  grid-area: main;
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    height: 100%;
   }
 
-  /* || MAIN */
-  .main {
-    padding: 30px 15px;
+    &__title {
+      margin: 0px 0px 20px 0px;
+
+      position: relative;
+
+      z-index: 2;
 
 
-    background-color: rgb(52,51,52);
+      color: $col-secondary;
+      font-size: clamp(1.5rem, 12.5vw, 7rem);
+      font-weight: bold;
 
-    @media (min-width: $breakpoint-1) {
-      grid-area: main;
-
-      @include grid-layout-section;
     }
 
-    .sidebar {
-      margin: 0px 0px 30px 0px;
-      padding: 25px 20px;
+    &__description {
+      width: max(280px, 50%);
 
+      margin: 0px 0px 15px 0px;
+
+      z-index: 2;
+
+
+      color: $col-tertiary;
+      font-size: 1.1rem;
+      line-height: 1.4rem;
+    }
+
+    &__submit-btn {
+      display: grid;
+      place-items: center;
+
+      width: 220px;
+
+      padding: 15px 7px;
+      margin: 0px 0px 50px 0px;
+
+      z-index: 2;
+
+
+      background-color: $col-secondary;
+      color: $col-primary;
+      font-weight: bold;
+
+      border-radius: 5px;
+    }
+
+    &__twitter-link {     
+      z-index: 2;
       
-      background-color: rgb(121,144,108);
-      
-      @media (min-width: $breakpoint-1) {
-        grid-column: 2 /3;
+      margin-top: 80px;
+      margin-bottom: -80px;
 
-        margin: 0;
+
+      color: $col-tertiary;
+
+      transition: all 0.2s ease-in-out;
+
+      @media (min-width: 420px) {
+        margin-top: 50px;
+        margin-bottom: -50px;
       }
 
-      &__menu {}
-
-      &__list {
-        display: grid;
-        grid-auto-flow: row;
-        row-gap: 25px;
+      @media (min-width: 620px) {
+        margin-top: 30px;
+        margin-bottom: -30px;
       }
 
-      &__link {
-        color: #fff;
-        font-size: 1.05rem;
+      @media (min-width: 768px) {
+        margin-top: 10px;
+        margin-bottom: -10px;
+      }
+
+      @media (min-width: 1024px) {
+        margin-top: 0px;
+        margin-bottom: 0px;
+      }
+
+      span {
+        padding: 0px 0px 0px 25px;
+
+
+        background-image: url('../../src/assets/icons/Twitter.svg');
+        background-repeat: no-repeat;
+        background-size: contain;
       }
     }
+}
 
-    .content { 
-      @media (min-width: $breakpoint-1) {
-        grid-column: 3 / 4;
-  
-  
-        padding: 0px 0px 0px 30px;
-      }
-
-      &__title {
-        margin: 0px 0px 40px 0;
+/* || Footer */
+.footer {
+  display: grid;
+  place-items: center;
+  place-content: center;
 
 
-        color: #fff;
-        font-size: 2rem;
-      }
-    }
+  background-color: darken($col-primary, 4%);
+
+  &__info {
+    color: whitesmoke;
+    text-align: center;
+    font-size: .7rem;
   }
+}
 
-  /* || FOOTER */
-  .footer {
-    grid-area: footer;
+.bg-images {
+  position: absolute;
+}
 
-    @include grid-layout;
+.bg-image {
+  display: block;
 
-    align-items: center;
+  position: absolute;
 
-    padding: 15px;
+  z-index: 1;
 
+  &-1 {
+      top: -215px;
+      left: 30px;
 
-    background-color: #77608d;
-    color: #fff;
+      width: 80px;
+      height: 80px;
 
-    @media (max-width: 550px) {
-      grid-template:
-        1fr
-        1fr
-        / 1fr;
-
-
-      text-align: center;
-    }
-
-    &__copy {
-      @media (min-width: 550px) {
-        grid-column: 2 / 3;
-      }
-
-      @media (max-width: 550px) {
-        order: 2;
-      }
-    }
-
-    &__text {
-      @media (min-width: 550px) {
-        grid-column: 3 / 4;
-        
-
-        text-align: right;
-      }
-
-      @media (max-width: 550px) {
-        order: 1;
-      }
-
-      a {
-        color: rgb(104, 11, 11);
-      }
-    }
+      background-image: url('../assets/images/User\ Avatar\ 3.svg');
+      background-size: contain;
   }
+  &-2 {
+    top: -230px;
+    left: 150px;
+
+    width: 125px;
+    height: 125px;
+
+    background-image: url('../assets/images/User\ Avatar\ 2.svg');
+    background-size: contain;
+  }
+  &-3 {
+    top: 75px;
+    left: 150px;
+
+    width: 125px;
+    height: 125px;
+
+    background-image: url('../assets/images/User\ Avatar\ 1.svg');
+    background-size: contain;
+  }
+  &-4 {}
+  &-5 {}
 }

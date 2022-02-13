@@ -4,9 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "scss": "sass --watch app/build/scss/style.scss app/src/styles/style.css",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "dekitsuneco",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "sass": "^1.49.7"
+  }
 }
