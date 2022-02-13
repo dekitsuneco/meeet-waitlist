@@ -213,6 +213,13 @@ body {
 
       background-image: url('../assets/images/User\ Avatar\ 3.svg');
       background-size: contain;
+
+      @media (min-width: 768px) {
+        top: -350px;
+
+        width: 100px;
+        height: 100px;
+      }
   }
   &-2 {
     top: -240px;
@@ -223,6 +230,14 @@ body {
 
     background-image: url('../assets/images/User\ Avatar\ 2.svg');
     background-size: contain;
+
+    @media (min-width: 768px) {
+      top: -390px;
+      left: 570px;
+
+      width: 140px;
+      height: 140px;
+    }
   }
   &-3 {
     top: 55px;
@@ -233,7 +248,49 @@ body {
 
     background-image: url('../assets/images/User\ Avatar\ 1.svg');
     background-size: contain;
+
+    @media (min-width: 768px) {
+      top: -25px;
+      left: 480px;
+
+      width: 110px;
+      height: 110px;
+    }
   }
-  &-4 {}
-  &-5 {}
+  &-4 {
+    @media (min-width: 768px) {
+      top: -195px;
+      left: 590px;
+  
+      width: 105px;
+      height: 105px;
+  
+      background-image: url('../assets/images/User\ Avatar\ 1.svg');
+      background-size: contain;
+    }
+  }
+  &-5 {
+    @media (min-width: 768px) {
+      top: -255px;
+      left: 450px;
+
+      width: 115px;
+      height: 115px;
+
+      background-image: url('../assets/images/User\ Avatar\ 5.svg');
+      background-size: contain;
+    }
+  }
+  &-6 {
+    @media (min-width: 768px) {
+      top: 105px;
+      left: 250px;
+
+      width: 145px;
+      height: 145px;
+
+      background-image: url('../assets/images/User\ Avatar\ 4.svg');
+      background-size: contain;
+    }
+  } 
 }
